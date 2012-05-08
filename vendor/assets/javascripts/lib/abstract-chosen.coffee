@@ -32,6 +32,9 @@ class AbstractChosen
     @search_contains = @options.search_contains || false
     @choices = 0
     @results_none_found = @options.no_results_text or "No results match"
+    @create_option = @options.create_option or false
+    @persistent_create_option = @options.persistent_create_option or false
+    @create_option_text = @options.create_option_text or "Add option"
 
   mouse_enter: -> @mouse_on_container = true
   mouse_leave: -> @mouse_on_container = false
@@ -58,7 +61,10 @@ class AbstractChosen
       '<li id="' + option.dom_id + '" class="' + classes.join(' ') + '"'+style+'>' + option.html + '</li>'
     else
       ""
-
+  
+  append_option: (option) ->
+    this.select_append_option(option)
+  
   results_update_field: ->
     this.result_clear_highlight()
     @result_single_selected = null
@@ -103,7 +109,7 @@ class AbstractChosen
     new_id
   
   generate_random_char: ->
-    chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZ"
+    chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     rand = Math.floor(Math.random() * chars.length)
     newchar = chars.substring rand, rand+1
 
