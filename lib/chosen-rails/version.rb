@@ -1,6 +1,6 @@
 module Chosen
   module Rails
-    VERSION = "0.9.8"
-    EDITOR_VERSION = "0.9.8"
+    VERSION = '1.0.0'
+    CHOSEN_VERSION = '1.0.0'
   end
 end
